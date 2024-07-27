@@ -8,7 +8,7 @@ use serde::{Serialize, Deserialize};
 use std::env;
 
 const PROGRAM_ID: &str = "imgZzuUv47Wwy6aV39mAksorLYZkUfswwp74Bq9PPjX";
-const RPC_URL: &str = "http://localhost:8899";
+const RPC_URL: &str = "https://api.devnet.solana.com";
 
 #[derive(Serialize, Deserialize)]
 struct Image {
