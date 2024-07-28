@@ -40,6 +40,11 @@ fn main() {
 
             close_account(keypair, pda);
         },
+        "read-pda" => {
+            let pda = args.next().unwrap();
+
+            read_pda(pda);
+        },
         _ => ()
     }
 }
@@ -108,4 +113,15 @@ fn close_account(keypair: String, pda: String) {
 
     println!("PDA Closed");
     println!("Signature: {signature}");
+}
+
+fn read_pda(pda: String) {
+    let pubkey = Pubkey::try_from(pda.as_str()).unwrap();
+    let client = RpcClient::new(RPC_URL);
+
+    let data = client.get_account_data(&pubkey).unwrap();
+    let image: Image = bincode::deserialize(&data).unwrap();
+
+    println!("Image Title: {}", image.title);
+    println!("Image URL: {}", image.url);
 }

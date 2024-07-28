@@ -1591,6 +1591,7 @@ dependencies = [
 name = "image-save-cli"
 version = "0.1.0"
 dependencies = [
+ "bincode",
  "serde",
  "solana-client",
  "solana-sdk",
